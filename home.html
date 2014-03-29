@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head>
+	<title>Home</title>	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="styleNav.css">
+	<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	
+	<script type="text/javascript">
+		var velocidad = 600;
+		function fnMostrarDiv(divMostrar)
+		{		
+			$('#'+divMostrar).removeClass("divOcultar");
+			$('.divOcultar').slideUp(velocidad);
+			$('#'+divMostrar).slideDown(velocidad);
+			$('#'+divMostrar).addClass("divOcultar");
+			return false;
+		}
+		
+	</script>
+</head>
+<body>
+	<nav class="navbar navbar-custom" role="navigation">
+  <!-- El logotipo y el icono que despliega el menú se agrupan
+  para mostrarlos mejor en los dispositivos móviles -->
+  <div class="navbar-header">
+  	<button type="button" class="navbar-toggle" data-toggle="collapse"
+  	data-target=".navbar-ex1-collapse">
+  	<span class="sr-only">Desplegar navegación</span>
+  	<span class="icon-bar"></span>
+  	<span class="icon-bar"></span>
+  	<span class="icon-bar"></span>
+  </button>
+  <a class="navbar-brand" href="#" onclick="fnMostrarDiv('divIndex');">Logotipo</a>
+</div>
+
+  <!-- Agrupar los enlaces de navegación, los formularios y cualquier
+  otro elemento que se pueda ocultar al minimizar la barra -->
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+  	<ul class="nav navbar-nav">      
+  		<li><a href="#" onclick="fnMostrarDiv('divVentas');">Ventas</a></li>
+  		<li class="dropdown">
+  			<a href="#" id="menuUsuarios" class="dropdown-toggle" data-toggle="dropdown">
+  				Usuarios <b class="caret"></b>
+  			</a>
+  			<ul class="dropdown-menu">
+  				<li><a href="#" onclick="fnMostrarDiv('divAltaUsr');">Alta de usuarios</a></li>
+  				<li><a href="#" onclick="fnMostrarDiv('divListado');">Baja de usuarios</a></li>
+  				<li><a href="#" onclick="fnMostrarDiv('divListado');">Modificacion de usuarios</a></li> 
+  			</ul>
+  		</li>
+  	</ul>
+  </div>
+  
+</nav>
+<div class="container">
+	
+	<div class="row">
+	</div>
+	
+	<!--Div para los usuarios -->
+	<div class="row-fluid divOcultar" id="divAltaUsr" style="display:none;">
+		<br>
+		<form id="altaForm" method="post">
+			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="col-md-6"><input class="form-control" type="text" name="nombre" id="nombre" placeholder="Nombre" required/></div>
+				<div class="col-md-3"></div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="col-md-6"><input type="text" name="apePaterno" id="apePaterno" class="form-control" placeholder="Apellido Paterno" required/></div>
+				<div class="col-md-3"></div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="col-md-6"><input type="text" name="apeMaterno" id="apeMaterno" class="form-control" placeholder="Apellido Materno"/></div>
+				<div class="col-md-3"></div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="col-md-6"><input type="text" name="usr" id="usr" class="form-control" placeholder="Usuario" required/></div>
+				<div class="col-md-3"></div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="col-md-6"><input type="password" name="password" id="password" class="form-control" placeholder="Password" required/></div>
+				<div class="col-md-3"></div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="col-md-6"><input type="password" name="password2" id="password2" class="form-control" placeholder="Password" required oninput="password.setCustomValidity(password.value != password2.value ? 'El password no coincide' : '')"/></div>
+				<div class="col-md-3"></div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="col-md-6"><input type="submit" class="btn btn-primary" value="Aceptar" name="btnConvertir" id="btnConvertir"></div>
+				<div class="col-md-3"></div>
+			</div>
+		</form>
+		<br>
+	</div>	
+	<div class="row-fluid divOcultar" id="divVentas" style="display:none;">
+		<h1>Ventas</h1>
+	</div>
+	<div class="row-fluid divOcultar" id="divListado" style="display:none;">
+		<h1>Listado de usuarios</h1>
+	</div>
+	<div class="row divOcultar" id="divIndex">
+		<!--Pantalla de inicio-->
+		<div class="col-md-12">
+			<br>
+			<center><img src="http://kiredon.tk/Ocelotl/img/logo.png" alt="Oceltol" class="img-rounded" style="max-width: 100%;"></center>
+		</div>
+	</div>
+	<div class="row" id="ventas" style="display:none;"></div>
+</div>
+</body>
